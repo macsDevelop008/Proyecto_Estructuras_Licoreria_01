@@ -1,4 +1,4 @@
-package mvc.model.persistence.dto;
+package mvc.model.server.persistence.dto;
 
 public interface Dto
 {
