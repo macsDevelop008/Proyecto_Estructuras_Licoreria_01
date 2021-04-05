@@ -3,6 +3,14 @@ package mvc.model.server.persistence;
 import collections.ToList;
 import mvc.model.server.persistence.entities.cabeceraFacturas.CabeceraFacturas;
 import mvc.model.server.persistence.entities.cabeceraFacturas.CabeceraFacturasDao;
+import mvc.model.server.persistence.entities.detallesFacturas.DetallesFacturas;
+import mvc.model.server.persistence.entities.detallesFacturas.DetallesFacturasDao;
+import mvc.model.server.persistence.entities.marcas.Marcas;
+import mvc.model.server.persistence.entities.marcas.MarcasDao;
+import mvc.model.server.persistence.entities.productos.Productos;
+import mvc.model.server.persistence.entities.productos.ProductosDao;
+import mvc.model.server.persistence.entities.tiposProductos.TiposProductos;
+import mvc.model.server.persistence.entities.tiposProductos.TiposProductosDao;
 
 import java.math.BigDecimal;
 
@@ -16,30 +24,27 @@ public class TestDB
     public TestDB()
     {
 
-        //Prueba Read
-        //Se crea objeto del DAO de la tabla y DTO para saber el SQL
-        CabeceraFacturasDao cabeceraFacturasDao = new CabeceraFacturasDao();
-        CabeceraFacturas cabeceraFacturas = new CabeceraFacturas();
+        //Prueba read
+        DetallesFacturasDao detallesFacturasDao = new DetallesFacturasDao();
+        DetallesFacturas detallesFacturas = new DetallesFacturas();
 
         //Almacena la lista generada con los datos d ela DB
-        ToList<CabeceraFacturas> cabeceraFacturasToList = new ToList<CabeceraFacturas>();
-        cabeceraFacturasToList = cabeceraFacturasDao.read(cabeceraFacturas);
+        ToList<DetallesFacturas> detallesFacturasToList = new ToList<DetallesFacturas>();
+        detallesFacturasToList = detallesFacturasDao.read(detallesFacturas);
 
         //Mostrar resultados por Consola
-        for (int i = 0; i < cabeceraFacturasToList.getTamanio(); i++)
+        for (int i = 0; i < detallesFacturasToList.getTamanio(); i++)
         {
-            System.out.println(cabeceraFacturasToList.getValor(i));
+            System.out.println(detallesFacturasToList.getValor(i));
         }
 
-
         //-------------------------------------------------------------------------
-
-        /*
+/*
         //Prueba BuscarPorID
-        CabeceraFacturasDao cabeceraFacturasDao = new CabeceraFacturasDao();
-        CabeceraFacturas cabeceraFacturas = new CabeceraFacturas(BigDecimal.valueOf(1));
+        DetallesFacturasDao detallesFacturasDao = new DetallesFacturasDao();
+        DetallesFacturas detallesFacturas = new DetallesFacturas(BigDecimal.valueOf(8), BigDecimal.valueOf(20100432));
 
-        System.out.println(cabeceraFacturasDao.findById(cabeceraFacturas));
-        */
+        System.out.println(detallesFacturasDao.findById(detallesFacturas));
+*/
     }
 }

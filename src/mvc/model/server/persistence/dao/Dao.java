@@ -24,15 +24,12 @@ public abstract class Dao<T extends Dto>
         return dataSource.runExecuteUpdate(data.insert());
     }
 
-    //public abstract ToList<T> read();
-
     public ToList<T> read(Dto data)
     {
         Entity<T> entity = new Entity<T>(data.getClass());
         ResultSet resultSet = dataSource.runQuery(data.read());
         return entity.getMultipleRows(resultSet);
     }
-
     public boolean update(Dto data)
     {
         return dataSource.runExecuteUpdate(data.update());
@@ -42,8 +39,6 @@ public abstract class Dao<T extends Dto>
     {
         return dataSource.runExecuteUpdate(data.delete());
     }
-
-    //public abstract T findById(Dto data);
 
     public T findById(Dto data)
     {

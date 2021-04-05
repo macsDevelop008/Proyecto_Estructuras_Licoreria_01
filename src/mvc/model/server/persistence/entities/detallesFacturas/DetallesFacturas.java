@@ -3,114 +3,94 @@ package mvc.model.server.persistence.entities.detallesFacturas;
 import mvc.model.server.persistence.dto.Dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class DetallesFacturas implements Dto, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;
 
-    //Sql ingresado por el usuario.
-    private String sql1, sql2;
-
     //Mapeo
-    private double cabeceraFacturasNumeroFactura;
-    private double productosCodigo;
+    private BigDecimal cabeceraFacturasNumeroFactura;
+    private BigDecimal productosCodigo;
     private int cantidadProducto;
-    private double valorUnitarioProducto;
+    private BigDecimal valorUnitarioProducto;
 
     //Constructores
-
-    public DetallesFacturas(String sql1, String sql2,double cabeceraFacturasNumeroFactura, double productosCodigo, int cantidadProducto, double valorUnitarioProducto) {
-        this.sql1 = sql1;
-        this.sql2 = sql2;
+    public DetallesFacturas(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo, int cantidadProducto, BigDecimal valorUnitarioProducto)
+    {
         this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
         this.productosCodigo = productosCodigo;
         this.cantidadProducto = cantidadProducto;
         this.valorUnitarioProducto = valorUnitarioProducto;
     }
 
-    public DetallesFacturas(double cabeceraFacturasNumeroFactura, double productosCodigo, int cantidadProducto, double valorUnitarioProducto) {
-        this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
-        this.productosCodigo = productosCodigo;
-        this.cantidadProducto = cantidadProducto;
-        this.valorUnitarioProducto = valorUnitarioProducto;
-    }
-
-    public DetallesFacturas(double cabeceraFacturasNumeroFactura, double productosCodigo) {
+    public DetallesFacturas(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo)
+    {
         this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
         this.productosCodigo = productosCodigo;
     }
 
-    public DetallesFacturas() {
+    public DetallesFacturas()
+    {
     }
     //----------------------------------------
 
     @Override
     public String insert()
     {
-        return sql1 + cabeceraFacturasNumeroFactura +", '"
-                + productosCodigo +", '"
-                + cantidadProducto + "','"
+        String sql = "INSERT INTO public.detalles_facturas(cabecera_facturas_numero_factura, productos_codigo," +
+                " cantidad_producto, valor_unitario_producto) VALUES ("
+                + cabeceraFacturasNumeroFactura +", '"
+                + productosCodigo + "', '"
+                + cantidadProducto + "', '"
                 + valorUnitarioProducto
                 + "');";
+        System.out.println(sql);
+        return sql;
     }
 
     @Override
     public String read()
     {
-        return sql1;
+        return "SELECT * FROM public.detalles_facturas";
     }
 
     @Override
     public String update()
     {
-        return sql1;
+        String sql = "UPDATE public.detalles_facturas SET cantidad_producto= '"+cantidadProducto
+                +"', valor_unitario_producto='"+valorUnitarioProducto
+                +"' WHERE cabecera_facturas_numero_factura = " + cabeceraFacturasNumeroFactura +" AND productos_codigo = "+productosCodigo;
+        System.out.println(sql);
+        return sql;
     }
 
     @Override
     public String delete()
     {
-        //llave primaria compuesta (2 atributos)      sql2 -> "AND productos_codigo ="
-        return sql1 + cabeceraFacturasNumeroFactura + sql2 + productosCodigo;
+        return "DELETE FROM public.detalles_facturas WHERE cabecera_facturas_numero_factura = " + cabeceraFacturasNumeroFactura +" AND productos_codigo = "+productosCodigo;
     }
 
     @Override
     public String findById()
     {
-        //llave primaria compuesta (2 atributos)      sql2 -> "AND productos_codigo ="
-        return sql1 + cabeceraFacturasNumeroFactura + sql2 + productosCodigo;
+        return "SELECT * FROM public.detalles_facturas WHERE cabecera_facturas_numero_factura = " + cabeceraFacturasNumeroFactura +" AND productos_codigo = "+productosCodigo;
     }
+
 
     //----------------------------------------
-
-    public String getSql1() {
-        return sql1;
-    }
-
-    public void setSql1(String sql1) {
-        this.sql1 = sql1;
-    }
-
-    public String getSql2() {
-        return sql2;
-    }
-
-    public void setSql2(String sql2) {
-        this.sql2 = sql2;
-    }
-
-    public double getCabeceraFacturasNumeroFactura() {
+    public BigDecimal getCabeceraFacturasNumeroFactura() {
         return cabeceraFacturasNumeroFactura;
     }
 
-    public void setCabeceraFacturasNumeroFactura(double cabeceraFacturasNumeroFactura) {
+    public void setCabeceraFacturasNumeroFactura(BigDecimal cabeceraFacturasNumeroFactura) {
         this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
     }
-
-    public double getProductosCodigo() {
+    public BigDecimal getProductosCodigo() {
         return productosCodigo;
     }
 
-    public void setProductosCodigo(double productosCodigo) {
+    public void setProductosCodigo(BigDecimal productosCodigo) {
         this.productosCodigo = productosCodigo;
     }
 
@@ -122,20 +102,18 @@ public class DetallesFacturas implements Dto, Serializable
         this.cantidadProducto = cantidadProducto;
     }
 
-    public double getValorUnitarioProducto() {
+    public BigDecimal getValorUnitarioProducto() {
         return valorUnitarioProducto;
     }
 
-    public void setValorUnitarioProducto(double valorUnitarioProducto) {
+    public void setValorUnitarioProducto(BigDecimal valorUnitarioProducto) {
         this.valorUnitarioProducto = valorUnitarioProducto;
     }
 
     @Override
     public String toString() {
         return "DetallesFacturas{" +
-                "sql1='" + sql1 + '\'' +
-                ", sql2='" + sql2 + '\'' +
-                ", cabeceraFacturasNumeroFactura=" + cabeceraFacturasNumeroFactura +
+                "cabeceraFacturasNumeroFactura=" + cabeceraFacturasNumeroFactura +
                 ", productosCodigo=" + productosCodigo +
                 ", cantidadProducto=" + cantidadProducto +
                 ", valorUnitarioProducto=" + valorUnitarioProducto +

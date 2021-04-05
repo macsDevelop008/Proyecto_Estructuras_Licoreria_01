@@ -3,39 +3,28 @@ package mvc.model.server.persistence.entities.productos;
 import mvc.model.server.persistence.dto.Dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Productos implements Dto, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;
 
-    //Sql ingresado por el usuario.
-    private String sql;
-
     //Mapeando
-    private double tiposProductosCodigo;
-    private double marcasCodigo;
-    private double codigo;
+    private BigDecimal tiposProductosCodigo;
+    private BigDecimal marcasCodigo;
+    private BigDecimal codigo;
     private String nombre;
 
     //Constructores
-
-    public Productos(String sql, double tiposProductosCodigo, double marcasCodigo, double codigo, String nombre) {
-        this.sql = sql;
+    public Productos(BigDecimal tiposProductosCodigo, BigDecimal marcasCodigo, BigDecimal codigo, String nombre) {
         this.tiposProductosCodigo = tiposProductosCodigo;
         this.marcasCodigo = marcasCodigo;
         this.codigo = codigo;
         this.nombre = nombre;
     }
 
-    public Productos(double tiposProductosCodigo, double marcasCodigo, double codigo, String nombre) {
-        this.tiposProductosCodigo = tiposProductosCodigo;
-        this.marcasCodigo = marcasCodigo;
+    public Productos(BigDecimal codigo) {
         this.codigo = codigo;
-        this.nombre = nombre;
-    }
-
-    public Productos(double tiposProductosCodigo) {
-        this.tiposProductosCodigo = tiposProductosCodigo;
     }
 
     public Productos() {
@@ -45,68 +34,68 @@ public class Productos implements Dto, Serializable
     @Override
     public String insert()
     {
-        return sql + tiposProductosCodigo +", '"
-                + marcasCodigo + "','"
-                + codigo + "','"
+        String sql = "INSERT INTO public.productos(tipos_productos_codigo, marcas_codigo, codigo, nombre) VALUES ("
+                + tiposProductosCodigo +", '"
+                + marcasCodigo + "', '"
+                + codigo + "', '"
                 + nombre.trim()
                 + "');";
+        System.out.println(sql);
+        return sql;
     }
 
     @Override
     public String read()
     {
-        return sql;
+        return "SELECT * FROM public.productos";
     }
 
     @Override
     public String update()
     {
+        String sql = "UPDATE public.productos SET tipos_productos_codigo= '"+tiposProductosCodigo
+                +"', marcas_codigo='"+marcasCodigo
+                +"', nombre='"+nombre.trim()
+                +"' WHERE codigo = " + codigo;
+        System.out.println(sql);
         return sql;
     }
 
     @Override
     public String delete()
     {
-        return sql + this.codigo;
+        return "DELETE FROM public.productos WHERE codigo = " + codigo;
     }
 
     @Override
     public String findById()
     {
-        return sql + this.codigo;
+        return "SELECT * FROM public.productos WHERE codigo = " + codigo;
     }
     //------------------
 
 
-    public String getSql() {
-        return sql;
-    }
-
-    public void setSql(String sql) {
-        this.sql = sql;
-    }
-
-    public double getTiposProductosCodigo() {
+    public BigDecimal getTiposProductosCodigo() {
         return tiposProductosCodigo;
     }
 
-    public void setTiposProductosCodigo(double tiposProductosCodigo) {
+    public void setTiposProductosCodigo(BigDecimal tiposProductosCodigo) {
         this.tiposProductosCodigo = tiposProductosCodigo;
     }
 
-    public double getMarcasCodigo() {
+    public BigDecimal getMarcasCodigo() {
         return marcasCodigo;
     }
 
-    public void setMarcasCodigo(double marcasCodigo) {
+    public void setMarcasCodigo(BigDecimal marcasCodigo) {
         this.marcasCodigo = marcasCodigo;
     }
 
-    public double getCodigo() {
+    public BigDecimal getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(double codigo) {
+    public void setCodigo(BigDecimal codigo) {
         this.codigo = codigo;
     }
 
@@ -121,8 +110,7 @@ public class Productos implements Dto, Serializable
     @Override
     public String toString() {
         return "Productos{" +
-                "sql='" + sql + '\'' +
-                ", tiposProductosCodigo=" + tiposProductosCodigo +
+                "tiposProductosCodigo=" + tiposProductosCodigo +
                 ", marcasCodigo=" + marcasCodigo +
                 ", codigo=" + codigo +
                 ", nombre='" + nombre + '\'' +

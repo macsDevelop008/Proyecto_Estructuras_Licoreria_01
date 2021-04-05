@@ -40,7 +40,7 @@ public class CabeceraFacturas implements Dto, Serializable
                 + fecha + "', '"
                 + nombreCliente.trim()
                 + "');";
-
+        System.out.println(sql);
         return sql;
     }
 
@@ -56,6 +56,7 @@ public class CabeceraFacturas implements Dto, Serializable
         String sql = "UPDATE public.cabecera_facturas SET fecha= '"+fecha
                 +"', nombre_cliente='"+nombreCliente.trim()
                 +"' WHERE numero_factura = " + numeroFactura;
+        System.out.println(sql);
         return sql;
     }
 

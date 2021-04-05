@@ -6,8 +6,6 @@ import mvc.model.server.persistence.dto.Dto;
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.util.Collection;
-import java.util.LinkedList;
 
 public class Entity<T extends Dto>
 {

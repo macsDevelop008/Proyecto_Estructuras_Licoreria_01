@@ -1,38 +1,39 @@
-package mvc.model.server.persistence.entities.marcas;
+package mvc.model.server.persistence.entities.tiposProductos;
 
 import mvc.model.server.persistence.dto.Dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Marcas implements Dto, Serializable
+public class TiposProductos implements Dto, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;
 
     //Mapeando
     private BigDecimal codigo;
-    private String nombre;
+    private String tipo;
 
     //Constructores
-    public Marcas(BigDecimal codigo, String nombre) {
+
+    public TiposProductos(BigDecimal codigo, String tipo) {
         this.codigo = codigo;
-        this.nombre = nombre;
+        this.tipo = tipo;
     }
 
-    public Marcas(BigDecimal codigo) {
+    public TiposProductos(BigDecimal codigo) {
         this.codigo = codigo;
     }
 
-    public Marcas() {
+    public TiposProductos() {
     }
-    //------------------
+    //--------------------------------
 
     @Override
     public String insert()
     {
-        String sql = "INSERT INTO public.marcas(codigo, nombre) VALUES ("
+        String sql = "INSERT INTO public.tipos_productos(codigo, tipo) VALUES ("
                 + codigo +", '"
-                + nombre.trim()
+                + tipo.trim()
                 + "');";
         System.out.println(sql);
         return sql;
@@ -41,13 +42,13 @@ public class Marcas implements Dto, Serializable
     @Override
     public String read()
     {
-        return "SELECT * FROM public.marcas";
+        return "SELECT * FROM public.tipos_productos";
     }
 
     @Override
     public String update()
     {
-        String sql = "UPDATE public.marcas SET nombre= '"+nombre
+        String sql = "UPDATE public.tipos_productos SET tipo= '"+tipo
                 +"' WHERE codigo = " + codigo;
         System.out.println(sql);
         return sql;
@@ -56,16 +57,16 @@ public class Marcas implements Dto, Serializable
     @Override
     public String delete()
     {
-        return "DELETE FROM public.marcas WHERE codigo = " + codigo;
+        return "DELETE FROM public.tipos_productos WHERE codigo = " + codigo;
     }
 
     @Override
     public String findById()
     {
-        return "SELECT * FROM public.marcas WHERE codigo = " + codigo;
+        return "SELECT * FROM public.tipos_productos WHERE codigo = " + codigo;
     }
-    //------------------
 
+    //--------------------------------
 
     public BigDecimal getCodigo() {
         return codigo;
@@ -75,19 +76,19 @@ public class Marcas implements Dto, Serializable
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
-        return "Marcas{" +
+        return "TiposProductos{" +
                 "codigo=" + codigo +
-                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
                 '}';
     }
 }

@@ -1,16 +1,14 @@
-package mvc.model.server.persistence.entities.cabeceraFacturas;
+package mvc.model.server.persistence.entities.marcas;
 
 import mvc.model.server.persistence.DataSource;
 import mvc.model.server.persistence.dao.Dao;
 
-
-public class CabeceraFacturasDao extends Dao<CabeceraFacturas>
+public class MarcasDao extends Dao<Marcas>
 {
-    public CabeceraFacturasDao()
+    public MarcasDao()
     {
         super(DataSource.getInstance());
     }
 
     //CONSULTAS ESPECIFICAS
-
 }
