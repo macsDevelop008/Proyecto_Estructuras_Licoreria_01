@@ -22,7 +22,7 @@ public class DataSource
         {
             //Puente - conexión a la DB
 
-            conProperties.load(new FileInputStream("src/mvc/model/persistence/data/connection.properties"));
+            conProperties.load(new FileInputStream("src/mvc/model/server/persistence/data/connection.properties"));
 
             String url = conProperties.getProperty("url");
             String user = conProperties.getProperty("user");

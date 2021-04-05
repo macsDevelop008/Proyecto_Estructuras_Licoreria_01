@@ -4,6 +4,8 @@ import collections.ToList;
 import mvc.model.server.persistence.DataSource;
 import mvc.model.server.persistence.dto.Dto;
 
+import java.sql.ResultSet;
+
 public abstract class Dao<T extends Dto>
 {
     //Objeto con el que se irá ejecutando las instrucciones sql
@@ -22,8 +24,14 @@ public abstract class Dao<T extends Dto>
         return dataSource.runExecuteUpdate(data.insert());
     }
 
-    public abstract ToList<T> read();
+    //public abstract ToList<T> read();
 
+    public ToList<T> read(Dto data)
+    {
+        Entity<T> entity = new Entity<T>(data.getClass());
+        ResultSet resultSet = dataSource.runQuery(data.read());
+        return entity.getMultipleRows(resultSet);
+    }
 
     public boolean update(Dto data)
     {
@@ -35,5 +43,12 @@ public abstract class Dao<T extends Dto>
         return dataSource.runExecuteUpdate(data.delete());
     }
 
-    public abstract T findById(Dto data);
+    //public abstract T findById(Dto data);
+
+    public T findById(Dto data)
+    {
+        Entity<T> entity = new Entity<T>(data.getClass());
+        ResultSet resultSet = dataSource.runQuery(data.findById());
+        return entity.getSingleRow(resultSet);
+    }
 }
