@@ -1,4 +1,4 @@
-package mvc.model.server;
+package mvc.model.client;
 
 import java.io.Serializable;
 

@@ -27,7 +27,7 @@ public class MultiTCPEchoServer {
         try {
             while(true) {
                 this.sock = this.serverSocket.accept();
-                new SingleTCPEchoServer(this.sock);
+                new SingleTCPEchoServerObject(this.sock);
             }
         } catch (IOException var2) {
             var2.printStackTrace();

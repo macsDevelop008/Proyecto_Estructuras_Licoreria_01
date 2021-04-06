@@ -1,5 +1,7 @@
 package mvc.model.server;
 
+import mvc.model.client.Client;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
