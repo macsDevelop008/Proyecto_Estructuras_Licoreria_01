@@ -1,11 +1,9 @@
-package mvc.model.server.persistence.entities.detallesFacturas;
-
-import mvc.model.server.persistence.dto.Dto;
+package mvc.model.client.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class DetallesFacturas implements Dto, Serializable
+public class DetallesFacturasClient implements DtoClient, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;
 
@@ -16,7 +14,7 @@ public class DetallesFacturas implements Dto, Serializable
     private BigDecimal valorUnitarioProducto;
 
     //Constructores
-    public DetallesFacturas(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo, int cantidadProducto, BigDecimal valorUnitarioProducto)
+    public DetallesFacturasClient(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo, int cantidadProducto, BigDecimal valorUnitarioProducto)
     {
         this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
         this.productosCodigo = productosCodigo;
@@ -24,13 +22,13 @@ public class DetallesFacturas implements Dto, Serializable
         this.valorUnitarioProducto = valorUnitarioProducto;
     }
 
-    public DetallesFacturas(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo)
+    public DetallesFacturasClient(BigDecimal cabeceraFacturasNumeroFactura, BigDecimal productosCodigo)
     {
         this.cabeceraFacturasNumeroFactura = cabeceraFacturasNumeroFactura;
         this.productosCodigo = productosCodigo;
     }
 
-    public DetallesFacturas()
+    public DetallesFacturasClient()
     {
     }
     //----------------------------------------
@@ -45,7 +43,6 @@ public class DetallesFacturas implements Dto, Serializable
                 + cantidadProducto + "', '"
                 + valorUnitarioProducto
                 + "');";
-        System.out.println(sql);
         return sql;
     }
 
@@ -61,7 +58,6 @@ public class DetallesFacturas implements Dto, Serializable
         String sql = "UPDATE public.detalles_facturas SET cantidad_producto= '"+cantidadProducto
                 +"', valor_unitario_producto='"+valorUnitarioProducto
                 +"' WHERE cabecera_facturas_numero_factura = " + cabeceraFacturasNumeroFactura +" AND productos_codigo = "+productosCodigo;
-        System.out.println(sql);
         return sql;
     }
 

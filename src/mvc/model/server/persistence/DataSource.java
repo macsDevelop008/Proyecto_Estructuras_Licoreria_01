@@ -51,7 +51,7 @@ public class DataSource
         return dataSource;
     }
 
-    //Ejecuta el executeQuery -> Select
+    //Ejecuta el executeQuery -> Select y FinByID
     //@ Retorna -> resulSet que contiene la información
     public ResultSet runQuery(String sql)
     {
@@ -82,6 +82,7 @@ public class DataSource
             Statement statement = con.createStatement();
             rows = statement.executeUpdate(sql);
             System.out.println("Successful query: "+sql);
+            //System.out.println();
             return true;
         }
         catch (SQLException e)

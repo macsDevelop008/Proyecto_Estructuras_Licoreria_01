@@ -1,6 +1,6 @@
-package mvc.model.server.persistence.entities.productos;
+package mvc.model.server.dto;
 
-import mvc.model.server.persistence.dto.Dto;
+import mvc.model.server.dto.Dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

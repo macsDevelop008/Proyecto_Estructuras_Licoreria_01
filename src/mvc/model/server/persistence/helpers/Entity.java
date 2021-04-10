@@ -1,7 +1,7 @@
-package mvc.model.server.persistence.dao;
+package mvc.model.server.persistence.helpers;
 
 import collections.ToList;
-import mvc.model.server.persistence.dto.Dto;
+import mvc.model.server.dto.Dto;
 
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
@@ -9,7 +9,6 @@ import java.sql.ResultSetMetaData;
 
 public class Entity<T extends Dto>
 {
-
     private final Class<? extends Dto> nameOfClass;
     private       Method[]             methodsOfClass;
 
@@ -66,6 +65,8 @@ public class Entity<T extends Dto>
         return dataToReturn;
     }
 
+
+
     private void setValueToData(Object dataTarget, Method method, Object sourceData) {
         try {
             method.invoke(dataTarget, sourceData.getClass().cast(sourceData));
@@ -97,5 +98,4 @@ public class Entity<T extends Dto>
         }
         return methodToReturn;
     }
-
 }

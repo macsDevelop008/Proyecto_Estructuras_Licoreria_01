@@ -1,6 +1,6 @@
-package mvc.model.server.persistence.dto;
+package mvc.model.client.dto;
 
-public interface Dto
+public interface DtoClient
 {
     String insert();
     String read();

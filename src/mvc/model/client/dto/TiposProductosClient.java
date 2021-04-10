@@ -1,11 +1,9 @@
-package mvc.model.server.persistence.entities.tiposProductos;
-
-import mvc.model.server.persistence.dto.Dto;
+package mvc.model.client.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class TiposProductos implements Dto, Serializable
+public class TiposProductosClient implements DtoClient, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;
 
@@ -15,16 +13,16 @@ public class TiposProductos implements Dto, Serializable
 
     //Constructores
 
-    public TiposProductos(BigDecimal codigo, String tipo) {
+    public TiposProductosClient(BigDecimal codigo, String tipo) {
         this.codigo = codigo;
         this.tipo = tipo;
     }
 
-    public TiposProductos(BigDecimal codigo) {
+    public TiposProductosClient(BigDecimal codigo) {
         this.codigo = codigo;
     }
 
-    public TiposProductos() {
+    public TiposProductosClient() {
     }
     //--------------------------------
 

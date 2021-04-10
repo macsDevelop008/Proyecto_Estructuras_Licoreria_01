@@ -1,7 +1,9 @@
 package collections;
 
 
-public class ToList<T>
+import java.io.Serializable;
+
+public class ToList<T> implements Serializable
 {
 
     private Node<T> inicio;

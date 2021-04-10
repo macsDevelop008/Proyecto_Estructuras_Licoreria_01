@@ -1,6 +1,8 @@
 package collections;
 
-public class Node<T>
+import java.io.Serializable;
+
+public class Node<T> implements Serializable
 {
     private T dato;
     private Node<T> siguiente;
