@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 
+//Mapea la entidad de la base de datos
 public class CabeceraFacturas implements Dto, Serializable
 {
     private static final long       serialVersionUID = 916479397570182364L;

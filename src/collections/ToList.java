@@ -3,9 +3,9 @@ package collections;
 
 import java.io.Serializable;
 
+//LISTA BOBLEMENTE ENLAZADA
 public class ToList<T> implements Serializable
 {
-
     private Node<T> inicio;
 
     private int tamanio;

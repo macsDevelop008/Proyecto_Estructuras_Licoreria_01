@@ -7,7 +7,7 @@ import mvc.model.server.persistence.helpers.BuildResultRunQuery;
 import java.io.*;
 import java.net.Socket;
 
-public class TCPEchoServerMix extends Thread
+public class TCPEchoServerMix extends Thread //Ayuda a crear los nuevos hilos - clientes
 {
 
     public static final int PORT = 1234;
@@ -52,14 +52,17 @@ public class TCPEchoServerMix extends Thread
         {
             do
             {
-                    //Almacena info sql
+                    //CONTINUACION DEL FLUJO******
+                    //Almacena info sql que llega del cliente
                 sql = this.in.readLine();
                 System.out.println("Message recived" +" "+sql);
 
                     //Envia info object
                 if(!sql.equals("EXIT"))
                 {
-                    //runQuery - Muliple
+                    //Calculo en cual de los dos metodos de la DB ejecutará.
+
+                    //runQuery - Muliple - Busqueme todo lo de la tabla
                     if(sql.contains("SELECT") && sql.indexOf("SELECT") == 0 &&
                             sql.contains("*") && sql.indexOf("*") <= 7)
                     {

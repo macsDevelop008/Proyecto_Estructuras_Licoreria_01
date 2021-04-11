@@ -19,7 +19,8 @@ public  class BuilderSQL
         return builder();
     }
 
-      String builder()
+
+    String builder()
     {
         String sql = "";
 
@@ -29,7 +30,6 @@ public  class BuilderSQL
         String inputMenuQueries = "";
 
         Scanner inputScanner = new Scanner (System.in);
-
         inputMenuEntities = inputScanner.nextLine();
 
         if(inputMenuEntities.equals("0"))

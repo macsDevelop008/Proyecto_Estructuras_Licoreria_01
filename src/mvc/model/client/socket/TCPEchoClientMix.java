@@ -36,7 +36,8 @@ public class TCPEchoClientMix
         run();
     }
 
-    private void run() {
+    private void run()
+    {
         Socket sock = null;
 
         try
@@ -48,19 +49,20 @@ public class TCPEchoClientMix
             InputStream inputStream = sock.getInputStream();
             ObjectInputStream in = new ObjectInputStream(inputStream);
 
-            //permite enviar String (SQL)
+            //Permite enviar String (SQL)
             PrintWriter    out = new PrintWriter(sock.getOutputStream(), true);
 
             //String que será enviado
             String sql;
-
             do
                 {
                     //Envia  SQL
                     BuilderSQL builderSQL = new BuilderSQL();
                     sql = builderSQL.builderReturn();
-                    out.println(sql);
+                    out.println(sql); //Envia sql al servidor - R
                     System.out.println(sql);
+                    //---------------------------
+
                     if(!sql.equals("EXIT"))
                     {
                         //Recibe objeto del servidor

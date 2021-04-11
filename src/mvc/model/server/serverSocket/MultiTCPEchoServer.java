@@ -11,14 +11,15 @@ public class MultiTCPEchoServer
 
     private ServerSocket serverSocket;
     public static final int PORT = 1234;
-    private Socket sock = null;
+    private Socket sock = null; //Cliente
+    DataSource dataSource;
 
     public static void main(String[] args)
     {
         new MultiTCPEchoServer();
     }
 
-    DataSource dataSource;
+
 
     public MultiTCPEchoServer()
     {
@@ -43,6 +44,7 @@ public class MultiTCPEchoServer
         {
             do
             {
+                //Nuevo hilo cuando el cliente entre
                 sock = serverSocket.accept();
                 new TCPEchoServerMix(sock, dataSource);
                 System.out.println("Cliente Conectado");

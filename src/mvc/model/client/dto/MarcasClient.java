@@ -17,11 +17,13 @@ public class MarcasClient implements DtoClient, Serializable
         this.nombre = nombre;
     }
 
-    public MarcasClient(BigDecimal codigo) {
+    public MarcasClient(BigDecimal codigo)
+    {
         this.codigo = codigo;
     }
 
-    public MarcasClient() {
+    public MarcasClient()
+    {
     }
     //------------------
 

@@ -34,6 +34,8 @@ public  class BuildResultRunQuery
 
     private static ToList<? extends Dto> resultMultipleRaw(String sql, ResultSet resultSet)
     {
+        //SELECT * FROM public.cabecera_facturas
+
         if(sql.contains("public.cabecera_facturas"))
         {
             Entity<CabeceraFacturas> entity = new Entity<CabeceraFacturas>(CabeceraFacturas.class);
