@@ -85,7 +85,7 @@ public class Marcas implements Dto, Serializable
 
     @Override
     public String toString() {
-        return "Marcas{" +
+        return "mvc.view.Marcas{" +
                 "codigo=" + codigo +
                 ", nombre='" + nombre + '\'' +
                 '}';

@@ -83,7 +83,7 @@ public class MarcasClient implements DtoClient, Serializable
 
     @Override
     public String toString() {
-        return "Marcas{" +
+        return "mvc.view.Marcas{" +
                 "codigo=" + codigo +
                 ", nombre='" + nombre + '\'' +
                 '}';

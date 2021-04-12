@@ -51,7 +51,7 @@ public  class BuilderSQL
      void menuEntities()
     {
         System.out.println("Selecciona la tabla a consultar");
-        System.out.println("1. Marcas");
+        System.out.println("1. mvc.view.Marcas");
         System.out.println("2. Tipos de Productos");
         System.out.println("3. Productos");
         System.out.println("4. Cabecera de Facturas");
@@ -76,7 +76,7 @@ public  class BuilderSQL
 
         switch (entity)
         {
-            case "1": //Marcas
+            case "1": //mvc.view.Marcas
                 result = BuilderMarca.querieMarcas(typeQuerie);
                 break;
             case "2": //Tipos de Productos
